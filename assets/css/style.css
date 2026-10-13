@@ -1,0 +1,267 @@
+/* Network Science Lab @ GNU
+   Palette taken from the lab's own figures: ink lines, white paper,
+   the GNU blue, and the red highlighted nodes. */
+:root {
+  color-scheme: light;
+  --ink: #18202e;
+  --muted: #5a6475;
+  --paper: #ffffff;
+  --wash: #f3f6f9;
+  --rule: #d9e0e8;
+  --gnu-blue: #2f87c8;
+  --link: #1d5c96;
+  --node-red: #c8452f;
+
+  /* EB Garamond for Latin text. It has no Hangul, so browsers use Nanum Myeongjo
+     (나눔명조) for Korean; then the system Myeongjo/Batang faces if web fonts fail. */
+  --font: "EB Garamond", "Nanum Myeongjo", "NanumMyeongjo", "나눔명조",
+          "AppleMyungjo", "Batang", "바탕", "Noto Serif CJK KR", Georgia, serif;
+
+  /* Dark sidebar, sampled from the Google Site */
+  --side-bg: #212121;
+  --side-ink: #ffffff;
+  --side-muted: #c4c4c4;
+  --side-accent: #f08a72;
+  --side-hover: #8cc2f0;   /* light blue for the lab name on hover */
+
+  --sidebar: 15.5rem;
+  --measure: 56rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+/* Keeps an opening bracket attached to the Korean word after it. */
+.nobr { white-space: nowrap; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 1.25rem;
+  line-height: 1.6;
+  font-variant-numeric: lining-nums;
+  word-break: keep-all;          /* keeps Korean words intact at line breaks */
+  overflow-wrap: anywhere;
+}
+
+img { max-width: 100%; height: auto; }
+
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+a:hover { color: var(--node-red); }
+a:focus-visible { outline: 2px solid var(--gnu-blue); outline-offset: 2px; border-radius: 2px; }
+
+.skip {
+  position: absolute; left: -999px; top: 0;
+  background: var(--ink); color: #fff; padding: 0.5rem 1rem;
+}
+.skip:focus { left: 0; z-index: 10; }
+
+/* ---------- Frame ---------- */
+.frame {
+  background: linear-gradient(to right, var(--side-bg) var(--sidebar), var(--paper) var(--sidebar));
+  display: grid;
+  grid-template-columns: var(--sidebar) minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: sticky; top: 0;
+  align-self: start;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 2rem 1.5rem;
+  background: var(--side-bg);
+  color: var(--side-ink);
+  display: flex; flex-direction: column;
+}
+
+.brand { display: block; text-decoration: none; color: var(--side-ink); }
+.brand:hover, .brand:focus-visible { color: var(--side-hover); }
+.brand-name {
+  display: block;
+  font-size: 1.85rem;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.sidebar nav ul { list-style: none; margin: 2rem 0 0; padding: 0; }
+.sidebar nav { margin-bottom: 2rem; }
+.sidebar nav li { margin: 0; }
+.sidebar nav a {
+  display: block;
+  padding: 0.4rem 0 0.4rem 0.9rem;
+  border-left: 2px solid transparent;
+  color: var(--side-ink);
+  text-decoration: none;
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+.sidebar nav a:hover { color: var(--side-ink); border-left-color: var(--side-muted); }
+.sidebar nav a:focus-visible { outline-color: var(--side-ink); }
+.sidebar nav a[aria-current="page"] {
+  border-left-color: var(--side-accent);
+}
+
+/* ---------- Page ---------- */
+.page {
+  padding: 3rem clamp(1.25rem, 5vw, 4rem) 2rem;
+  max-width: calc(var(--measure) + 8rem);
+}
+
+
+
+.page h2 {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 1.25;
+  margin: 2.75rem 0 1rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--rule);
+}
+.page h2 a { color: inherit; text-decoration: none; }
+.page h2 a:hover { color: var(--link); }
+
+.page p, .page ul, .page ol { max-width: var(--measure); }
+.page p { margin: 0 0 1rem; }
+
+.page ul, .page ol { padding-left: 1.4rem; margin: 0 0 1rem; }
+.page li { margin: 0 0 0.5rem; }
+.page li > p { margin: 0 0 0.35rem; }
+.page li ul { margin: 0.35rem 0 0.25rem; padding-left: 1.2rem; }
+.page li li { margin-bottom: 0.25rem; color: var(--muted); }
+.page li li a { color: var(--link); }
+.page ul ul { list-style: circle; }
+
+/* ---------- Home ---------- */
+.hero { margin-bottom: 2.5rem; }
+.home-logo { display: block; width: 17rem; max-width: 70%; margin: 0 0 1.25rem; }
+.affiliation { font-size: 1.25rem; color: var(--muted); margin: 0; }
+.funding {
+  margin-top: 3.5rem;
+  max-width: var(--measure);
+  padding: 0.9rem 1.1rem;
+  border-left: 3px solid var(--gnu-blue);
+  background: var(--wash);
+  font-size: 1.12rem;
+}
+.funding p { margin: 0; }
+.funding .prior { margin-top: 0.4rem; color: var(--muted); font-size: 1rem; }
+
+.intro p { font-size: 1.25rem; }
+[lang="ko"] p, [lang="ko"] li { line-height: 1.85; }
+.intro[lang="ko"] p { font-size: 1.12rem; }
+.intro + .intro { margin-top: 1.75rem; }
+
+.figures { margin-top: 3rem; }
+.figures-note { color: var(--muted); font-size: 1.1rem; }
+.mosaic {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-top: 1rem;
+}
+.mosaic a {
+  display: flex; flex-direction: column;
+  background: var(--paper);
+  padding: 0.9rem 0.9rem 0.75rem;
+  text-decoration: none;
+  color: var(--muted);
+}
+.mosaic img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: contain;
+
+  transition: transform 0.25s ease;
+}
+.mosaic a.wide { grid-column: span 2; }
+.mosaic a.wide img { aspect-ratio: 8 / 3; }
+.mosaic span { font-size: 1rem; margin-top: auto; padding-top: 0.6rem; }
+.mosaic a:hover span, .mosaic a:focus-visible span { color: var(--gnu-blue); }
+.mosaic a:hover img { transform: scale(1.03); }
+
+/* ---------- PI ---------- */
+.portrait {
+  display: block;
+  width: 14rem;
+  max-width: 100%;
+  margin: 0 0 1.75rem;
+  border: 1px solid var(--rule);
+}
+.contact p { margin: 0 0 0.2rem; }
+.contact p:first-child { font-size: 1.6rem; margin-bottom: 0.6rem; }
+.contact + ul { margin-top: 1.75rem; clear: none; }
+
+/* ---------- Publications: newest paper has the highest number ----------
+   The list uses <ol reversed>, so numbering counts down automatically
+   when a paper is added at the top. */
+.page-publications-html ol { list-style: decimal outside; padding-left: 3rem; }
+.page-publications-html ol > li { padding-left: 0.4rem; margin-bottom: 1.1rem; }
+.page-publications-html ol > li::marker {
+  color: var(--muted);
+  font-size: 1.05rem;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* ---------- Network literacy ---------- */
+.cover { display: block; width: min(24rem, 100%); border: 1px solid var(--rule); margin-top: 1rem; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  margin-top: 4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: var(--measure);
+}
+.site-footer p { margin: 0 0 0.25rem; }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 52rem) {
+  .frame { grid-template-columns: 1fr; }
+  .sidebar {
+    position: static; height: auto;
+    border-right: 0; border-bottom: 1px solid var(--rule);
+    padding: 0.9rem 1.25rem;
+    flex-direction: row; align-items: center; gap: 0.75rem 1rem; flex-wrap: wrap;
+  }
+  .brand-name { font-size: 1.4rem; }
+  .sidebar nav { margin-bottom: 0; }
+  .brand { order: 1; }
+  .sidebar nav { order: 3; flex-basis: 100%; }
+  .sidebar nav ul { margin: 0; display: flex; flex-wrap: wrap; gap: 0.15rem 1rem; }
+  .sidebar nav a { padding: 0.2rem 0; border-left: 0; border-bottom: 2px solid transparent; font-size: 1.1rem; }
+  .sidebar nav a[aria-current="page"] { border-bottom-color: var(--side-accent); }
+  .frame { background: var(--paper); }
+  .page { padding-top: 2rem; }
+  body { font-size: 1.15rem; }
+  .intro p { font-size: 1.15rem; }
+  .mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mosaic a.wide { grid-column: auto; }
+  .mosaic a.wide img { aspect-ratio: 4 / 3; }
+  .portrait { width: 12rem; }
+  .page-publications-html ol { padding-left: 2.4rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mosaic img { transition: none; }
+  .mosaic a:hover img { transform: none; }
+}
+
+@media print {
+  .sidebar, .skip { display: none; }
+  .frame { display: block; }
+}
+
+/* Page titles are hidden visually (the pages open with their content, as on the
+   former Google Site) but stay available to screen readers and search engines. */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+.page > .visually-hidden + h2 { margin-top: 0; }
