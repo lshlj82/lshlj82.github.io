@@ -169,7 +169,7 @@ a:focus-visible { outline: 2px solid var(--gnu-blue); outline-offset: 2px; borde
 .mosaic a {
   display: flex; flex-direction: column;
   background: var(--paper);
-  padding: 0.9rem 0.9rem 0.75rem;
+  padding: 0.9rem;
   text-decoration: none;
   color: var(--muted);
 }
@@ -180,8 +180,6 @@ a:focus-visible { outline: 2px solid var(--gnu-blue); outline-offset: 2px; borde
 }
 .mosaic a.wide { grid-column: span 2; }
 .mosaic a.wide img { aspect-ratio: 8 / 3; }
-.mosaic span { font-size: 1rem; margin-top: auto; padding-top: 0.6rem; }
-.mosaic a:hover span, .mosaic a:focus-visible span { color: var(--gnu-blue); }
 .mosaic a:hover img { transform: scale(1.03); }
 
 /* ---------- PI ---------- */
