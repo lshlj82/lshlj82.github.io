@@ -44,6 +44,10 @@ The last three menu items, **KPS StatPhys Division**, **MEEting**, and **부경�
 
 To find broken links, put `check_links.py` in this folder and run `python3 check_links.py`. It tests every link and writes `link_report.html` listing the broken ones. Delete both files before uploading.
 
+## Light and dark mode
+
+The moon/sun button (top-right corner of every page; at the right end of the top bar on phones) switches between light and dark mode. Light is the default; a visitor's choice is remembered in their browser. In dark mode the page turns dark and the sidebar bright. Both color sets are the variables at the top of `assets/css/style.css` (`:root` for light, `:root[data-theme="dark"]` for dark).
+
 ## Seeing your changes
 
 After you commit, GitHub needs a minute or two to publish. Each page loads `style.css?v=…` with a code that changes whenever the stylesheet changes, so browsers always pick up a new stylesheet. To force a fresh reload anyway: Safari Option+Cmd+R; Chrome/Firefox on Mac Cmd+Shift+R.
