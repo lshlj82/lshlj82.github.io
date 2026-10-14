@@ -48,13 +48,17 @@ To find broken links, put `check_links.py` in this folder and run `python3 check
 
 The moon/sun button (top-right corner of every page; at the right end of the top bar on phones) switches between light and dark mode. Light is the default; a visitor's choice is remembered in their browser. In dark mode the page turns dark and the sidebar bright. Both color sets are the variables at the top of `assets/css/style.css` (`:root` for light, `:root[data-theme="dark"]` for dark).
 
+## Korean font file
+
+`assets/fonts/iropke-batang-m.woff2` is 이롭게바탕체 Medium (© 2016 Iropke, iropke.com), cut down to the 2,350 common Hangul syllables (KS X 1001) plus every Korean character on the site, and converted to WOFF2 (263 KB instead of 3.1 MB). A rare syllable outside that set is shown in 나눔명조 instead. Use of the font follows Iropke's license terms.
+
 ## Seeing your changes
 
 After you commit, GitHub needs a minute or two to publish. Each page loads `style.css?v=…` with a code that changes whenever the stylesheet changes, so browsers always pick up a new stylesheet. To force a fresh reload anyway: Safari Option+Cmd+R; Chrome/Firefox on Mac Cmd+Shift+R.
 
 ## Fonts and colors
 
-**EB Garamond** for English and **Nanum Myeongjo (나눔명조)** for Korean, both loaded from Google Fonts. Browsers choose per character, so mixed lines like "Gyeongsang National University (경상국립대학교)" use each font for its own script. If Google Fonts can't load, Korean falls back to the visitor's installed Nanum Myeongjo, AppleMyungjo (Mac) or Batang (Windows). The sidebar is dark charcoal (#212121), as on the former Google Site. Fonts and colors are the variables at the top of `assets/css/style.css`.
+**EB Garamond** for English (from Google Fonts) and **이롭게바탕체 (Iropke Batang) Medium** for Korean, hosted in `assets/fonts/iropke-batang-m.woff2`, with **Nanum Myeongjo (나눔명조)** from Google Fonts as a backup. Browsers choose per character, so mixed lines like "Gyeongsang National University (경상국립대학교)" use each font for its own script. If Google Fonts can't load, Korean falls back to the visitor's installed Nanum Myeongjo, AppleMyungjo (Mac) or Batang (Windows). The sidebar is dark charcoal (#212121), as on the former Google Site. Fonts and colors are the variables at the top of `assets/css/style.css`.
 
 Pages have no visible title (they open with their content, as on the former Google Site); each still has a hidden title for search engines and screen readers. The home page opens with the lab logo.
 
