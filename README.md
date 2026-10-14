@@ -36,6 +36,10 @@ To add a new file later, put it in the right `assets/files/` subfolder and link 
 
 The CV is at `CV/CV_SHL.pdf` in this repository, the same address as before (`lshlj82.github.io/CV/CV_SHL.pdf`). To update it, replace that file and commit. While your separate `CV` repository still publishes a Pages site, GitHub serves `/CV/` from that repository instead, so turn its Pages off once this site is live (in the `CV` repository: Settings → Pages → Unpublish site).
 
+## Menu links to the meeting sites
+
+The last two menu items, **MEEting** and **부경상회**, link to their own Google Sites and sit below a thin divider. They appear in the menu block of every HTML page (the `<li class="nav-divider">` line and the one after it). To change a link or label, edit those two lines in each of the 8 HTML files. Hovering over an item shows its full description (the `title="…"` text).
+
 ## Seeing your changes
 
 After you commit, GitHub needs a minute or two to publish. Each page loads `style.css?v=…` with a code that changes whenever the stylesheet changes, so browsers always pick up a new stylesheet. To force a fresh reload anyway: Safari Option+Cmd+R; Chrome/Firefox on Mac Cmd+Shift+R.

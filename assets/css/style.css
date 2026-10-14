@@ -91,6 +91,7 @@ a:focus-visible { outline: 2px solid var(--gnu-blue); outline-offset: 2px; borde
 .sidebar nav ul { list-style: none; margin: 2rem 0 0; padding: 0; }
 .sidebar nav { margin-bottom: 2rem; }
 .sidebar nav li { margin: 0; }
+.sidebar nav li.nav-divider { margin-top: 0.9rem; padding-top: 0.9rem; border-top: 1px solid rgba(255, 255, 255, 0.18); }   /* meeting sites below */
 .sidebar nav a {
   display: block;
   padding: 0.4rem 0 0.4rem 0.9rem;
