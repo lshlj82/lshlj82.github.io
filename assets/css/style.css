@@ -202,6 +202,9 @@ html:not(.js) .theme-toggle { display: none; }   /* needs JavaScript */
 }
 .funding p { margin: 0; }
 .funding .prior { margin-top: 0.4rem; color: var(--muted); font-size: 1rem; }
+.fonts-note { margin-top: 2.5rem; max-width: var(--measure); color: var(--muted); font-size: 0.95rem; }
+.fonts-note p { margin: 0; }
+.fonts-note a { color: inherit; }
 
 .intro p { font-size: 1.25rem; }
 [lang="ko"] p, [lang="ko"] li { line-height: 1.85; }
