@@ -17,8 +17,8 @@
   --font: "EB Garamond", "Iropke Batang", "Nanum Myeongjo", "NanumMyeongjo", "나눔명조",
           "AppleMyungjo", "Batang", "바탕", "Noto Serif CJK KR", Georgia, serif;
 
-  /* Dark sidebar, sampled from the Google Site */
-  --side-bg: #212121;
+  /* Sidebar: pure black (light mode) */
+  --side-bg: #000000;
   --side-ink: #ffffff;
   --side-muted: #c4c4c4;
   --side-accent: #f08a72;
@@ -31,14 +31,14 @@
 }
 
 /* Dark mode (chosen with the moon/sun button; light is the default).
-   The page turns dark and the sidebar turns bright. */
+   The page turns pure black (kind to OLED screens) and the sidebar turns bright. */
 :root[data-theme="dark"] {
   color-scheme: dark;
   --ink: #e4e6eb;
   --muted: #a3abb8;
-  --paper: #15171c;
-  --wash: #1f232b;
-  --rule: #343a46;
+  --paper: #000000;   /* pure black: OLED pixels switch off */
+  --wash: #111111;
+  --rule: #2c2c2c;
   --gnu-blue: #6cb2ea;
   --node-red: #f0846c;
 
