@@ -38,7 +38,11 @@ The CV is at `CV/CV_SHL.pdf` in this repository, the same address as before (`ls
 
 ## Menu links to the meeting sites
 
-The last two menu items, **MEEting** and **부경상회**, link to their own Google Sites and sit below a thin divider. They appear in the menu block of every HTML page (the `<li class="nav-divider">` line and the one after it). To change a link or label, edit those two lines in each of the 8 HTML files. Hovering over an item shows its full description (the `title="…"` text).
+The last three menu items, **KPS StatPhys Division**, **MEEting**, and **부경상회**, link to their own sites and sit below a thin divider. They appear in the menu block of every HTML page (the `<li class="nav-divider">` line and the two after it). To change a link or label, edit those lines in each of the 8 HTML files. Hovering over an item shows its full description (the `title="…"` text).
+
+## Checking links
+
+To find broken links, put `check_links.py` in this folder and run `python3 check_links.py`. It tests every link and writes `link_report.html` listing the broken ones. Delete both files before uploading.
 
 ## Seeing your changes
 
