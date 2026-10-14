@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add("js")</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Press Release | Network Science Lab @ GNU</title>
@@ -9,17 +10,26 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=8a784aa2">
+<link rel="stylesheet" href="assets/css/style.css?v=0b4cd7eb">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="frame">
 <header class="sidebar">
-  <a class="brand" href="index.html">
-    <span class="brand-name">Network Science Lab @&nbsp;GNU</span>
-  </a>
-  <nav aria-label="Site">
-    <ul>
+  <div class="topbar">
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <a class="brand" href="index.html">
+      <span class="brand-name">Network Science Lab @&nbsp;GNU</span>
+    </a>
+  </div>
+  <div class="drawer" id="site-menu">
+    <button class="menu-close" type="button" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <nav aria-label="Site">
+      <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="pi.html">Principal Investigator</a></li>
       <li><a href="members.html">Members</a></li>
@@ -27,8 +37,10 @@
       <li><a href="talks.html">Research Talks & Lecture</a></li>
       <li><a href="press.html" aria-current="page">Press Release</a></li>
       <li><a href="network-literacy.html">Network Literacy Project</a></li>
-    </ul>
-  </nav>
+      </ul>
+    </nav>
+  </div>
+  <div class="menu-backdrop" aria-hidden="true"></div>
 </header>
 <main id="main" class="page page-press-html">
 <h1 class="visually-hidden">Press Release</h1>
@@ -134,5 +146,29 @@
 </footer>
 </main>
 </div>
+<script>
+/* Phone menu: the ☰ button slides the menu in; ×, the dimmed page, or Escape closes it. */
+(function () {
+  var root = document.documentElement,
+      open = document.querySelector(".menu-toggle"),
+      close = document.querySelector(".menu-close"),
+      backdrop = document.querySelector(".menu-backdrop");
+  if (!open) return;
+  function setOpen(isOpen) {
+    root.classList.toggle("menu-open", isOpen);
+    open.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    if (isOpen) close.focus(); else open.focus({ preventScroll: true });
+  }
+  open.addEventListener("click", function () { setOpen(true); });
+  close.addEventListener("click", function () { setOpen(false); });
+  backdrop.addEventListener("click", function () { setOpen(false); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && root.classList.contains("menu-open")) setOpen(false);
+  });
+  window.matchMedia("(max-width: 52rem)").addEventListener("change", function (m) {
+    if (!m.matches && root.classList.contains("menu-open")) setOpen(false);
+  });
+})();
+</script>
 </body>
 </html>

@@ -78,6 +78,7 @@ a:focus-visible { outline: 2px solid var(--gnu-blue); outline-offset: 2px; borde
   display: flex; flex-direction: column;
 }
 
+.menu-toggle, .menu-close, .menu-backdrop { display: none; }   /* phone-only controls */
 .brand { display: block; text-decoration: none; color: var(--side-ink); }
 .brand:hover, .brand:focus-visible { color: var(--side-hover); }
 .brand-name {
@@ -221,21 +222,59 @@ a:focus-visible { outline: 2px solid var(--gnu-blue); outline-offset: 2px; borde
 
 /* ---------- Small screens ---------- */
 @media (max-width: 52rem) {
-  .frame { grid-template-columns: 1fr; }
+  .frame { grid-template-columns: 1fr; background: var(--paper); }
+
+  /* Slim top bar: menu button + lab name, staying at the top while scrolling */
   .sidebar {
-    position: static; height: auto;
-    border-right: 0; border-bottom: 1px solid var(--rule);
-    padding: 0.9rem 1.25rem;
-    flex-direction: row; align-items: center; gap: 0.75rem 1rem; flex-wrap: wrap;
+    position: sticky; top: 0; z-index: 20;
+    height: auto; overflow: visible;
+    display: block;
+    padding: 0.35rem 0.75rem;
+    background: var(--paper);
+    color: var(--ink);
+    border-bottom: 1px solid var(--rule);
   }
-  .brand-name { font-size: 1.4rem; }
-  .sidebar nav { margin-bottom: 0; }
-  .brand { order: 1; }
-  .sidebar nav { order: 3; flex-basis: 100%; }
-  .sidebar nav ul { margin: 0; display: flex; flex-wrap: wrap; gap: 0.15rem 1rem; }
-  .sidebar nav a { padding: 0.2rem 0; border-left: 0; border-bottom: 2px solid transparent; font-size: 1.1rem; }
-  .sidebar nav a[aria-current="page"] { border-bottom-color: var(--side-accent); }
-  .frame { background: var(--paper); }
+  .topbar { display: flex; align-items: center; gap: 0.35rem; }
+  .menu-toggle, .menu-close {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2.75rem; height: 2.75rem;          /* comfortable tap target */
+    padding: 0; border: 0; border-radius: 4px;
+    background: transparent; cursor: pointer;
+  }
+  .menu-toggle { color: var(--ink); }
+  html:not(.js) .menu-toggle { display: none; }   /* without JavaScript the menu is already open */
+  .menu-toggle:focus-visible { outline: 2px solid var(--gnu-blue); outline-offset: 1px; }
+  .brand { color: var(--ink); min-width: 0; }
+  .brand:hover, .brand:focus-visible { color: var(--gnu-blue); }
+  .brand-name { font-size: 1.3rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* Without JavaScript the menu simply shows below the bar */
+  .drawer { background: var(--side-bg); color: var(--side-ink); margin: 0.35rem -0.75rem -0.35rem; padding: 0.5rem 1.25rem 1rem; }
+  .menu-close { display: none; }
+
+  /* With JavaScript: dark menu that slides in from the left */
+  .js .drawer {
+    position: fixed; top: 0; bottom: 0; left: 0; z-index: 40;
+    width: min(19rem, 82vw);
+    margin: 0; padding: 0.75rem 1.25rem 2rem;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform 0.25s ease, visibility 0s linear 0.25s;
+  }
+  .js.menu-open .drawer { transform: none; visibility: visible; transition: transform 0.25s ease; }
+  .js .menu-close { display: inline-flex; color: var(--side-ink); background: #3a3a3a; }
+  .js .menu-close:focus-visible { outline: 2px solid var(--side-ink); outline-offset: 1px; }
+  .js .menu-backdrop {
+    display: block; position: fixed; inset: 0; z-index: 30;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
+  }
+  .js.menu-open .menu-backdrop { opacity: 1; pointer-events: auto; }
+  .js.menu-open { overflow: hidden; }       /* page doesn't scroll behind the open menu */
+  .sidebar nav ul { margin: 1rem 0 0; }
+  .sidebar nav a { font-size: 1.2rem; padding: 0.55rem 0 0.55rem 0.9rem; }
+
   .page { padding-top: 2rem; }
   body { font-size: 1.15rem; }
   .intro p { font-size: 1.15rem; }
@@ -247,6 +286,7 @@ a:focus-visible { outline: 2px solid var(--gnu-blue); outline-offset: 2px; borde
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .drawer, .menu-backdrop { transition: none !important; }
   .mosaic img { transition: none; }
   .mosaic a:hover img { transform: none; }
 }
