@@ -58,7 +58,7 @@ After you commit, GitHub needs a minute or two to publish. Each page loads `styl
 
 ## Fonts and colors
 
-**EB Garamond** for English (from Google Fonts) and **이롭게바탕체 (Iropke Batang) Medium** for Korean, hosted in `assets/fonts/iropke-batang-m.woff2`, with **Nanum Myeongjo (나눔명조)** from Google Fonts as a backup. Browsers choose per character, so mixed lines like "Gyeongsang National University (경상국립대학교)" use each font for its own script. If Google Fonts can't load, Korean falls back to the visitor's installed Nanum Myeongjo, AppleMyungjo (Mac) or Batang (Windows). The sidebar is dark charcoal (#212121), as on the former Google Site. Fonts and colors are the variables at the top of `assets/css/style.css`.
+**EB Garamond** for English (from Google Fonts) and **이롭게바탕체 (Iropke Batang) Medium** for Korean, hosted in `assets/fonts/iropke-batang-m.woff2`, with **Nanum Myeongjo (나눔명조)** from Google Fonts as a backup. Browsers choose per character, so mixed lines like "Gyeongsang National University (경상국립대학교)" use each font for its own script. If Google Fonts can't load, Korean falls back to the visitor's installed Nanum Myeongjo, AppleMyungjo (Mac) or Batang (Windows). The sidebar is pure black (#000000) in light mode. Fonts and colors are the variables at the top of `assets/css/style.css`.
 
 Pages have no visible title (they open with their content, as on the former Google Site); each still has a hidden title for search engines and screen readers. The home page opens with the lab logo.
 
