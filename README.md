@@ -65,6 +65,7 @@ Pages have no visible title (they open with their content, as on the former Goog
 ## Editing
 
 - **Add a paper:** in `publications.html`, copy an existing `<li>…</li>` block under "Research Papers" and paste it at the top. The list is `<ol reversed>`, so the newest paper always has the highest number and everything renumbers automatically. Put your name, the paper title, and the volume number in bold with `<strong>…</strong>`, e.g. `<a href="…"><strong>Sang&nbsp;Hoon Lee</strong></a>`, `<strong>Paper title</strong>`, `<a href="…">Phys. Rev. E <strong>111</strong>, 054302</a>`.
+- **Add a translation:** add a new `<li>…</li>` at the top of the Translation list (`<ol reversed start="…" data-count-to-zero>`). The numbers count down to 0 and adjust themselves to the number of items; you can leave the `start` value as it is.
 - **Korean in brackets:** Safari can wrap a line right after "(" when Korean text follows. When you add something like "(경상국립대학교)" by hand, wrap the bracket and the Korean word together: `<span class="nobr">(경상국립대학교)</span>`. That keeps them on the same line in every browser.
 - **Quotes and apostrophes:** type curly ones (‘ ’ “ ”), e.g. course ‘Network Science’ or people’s. Straight quotes (' ") look like short vertical ticks in EB Garamond. On a Mac, Option+] and Option+Shift+] give ‘ and ’, and Option+[ and Option+Shift+[ give “ and ”.
 - **Your name:** write it as `Sang&nbsp;Hoon Lee` when adding a paper or other text by hand. The `&nbsp;` keeps "Sang" and "Hoon" on the same line.

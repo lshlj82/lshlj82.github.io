@@ -120,5 +120,11 @@
   });
 })();
 </script>
+<script>
+/* Lists marked data-count-to-zero count down to 0: start = number of items - 1. */
+document.querySelectorAll("ol[data-count-to-zero]").forEach(function (ol) {
+  ol.start = ol.querySelectorAll(":scope > li").length - 1;
+});
+</script>
 </body>
 </html>
