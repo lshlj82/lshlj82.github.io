@@ -22,6 +22,8 @@
   --side-ink: #ffffff;
   --side-muted: #c4c4c4;
   --side-accent: #f08a72;
+  --logo-ink: #000000;   /* home-page logo; gold while a pair of stubs joins */
+  --logo-hi: #e0a800;
   --side-hover: #8cc2f0;   /* light blue for the lab name on hover */
   --side-rule: rgba(255, 255, 255, 0.18);   /* divider above the meeting links */
   --side-button: #3a3a3a;                   /* phone menu's close button */
@@ -47,6 +49,8 @@
   --side-muted: #5f5f5f;
   --side-accent: #c8452f;
   --side-hover: #1d6fb5;
+  --logo-ink: #ffffff;
+  --logo-hi: #f5d24e;
   --side-rule: rgba(0, 0, 0, 0.14);
   --side-button: #dedede;
 }
@@ -188,8 +192,22 @@ html:not(.js) .theme-toggle { display: none; }   /* needs JavaScript */
 
 /* ---------- Home ---------- */
 .hero { margin-bottom: 2.5rem; }
-.home-logo { display: block; width: 17rem; max-width: 70%; margin: 0 0 1.25rem; }
-:root[data-theme="dark"] .home-logo { filter: invert(1); }
+/* Home-page logo: a vector drawing of the network that assembles itself (assets/js/logo-assembly.js),
+   with the lab name below it as the original lettering. */
+.logo-anim { width: 17rem; max-width: 70%; margin: 0 0 1.25rem; -webkit-tap-highlight-color: transparent; }
+.logo-anim svg { display: block; width: 100%; height: auto; overflow: visible; }
+.logo-anim line { stroke: var(--logo-ink); stroke-width: 2.14; stroke-linecap: round; }
+.logo-anim circle { fill: var(--logo-ink); }
+.logo-anim line.joining { stroke: var(--logo-hi); stroke-width: 3; }
+.logo-text { display: block; width: 100%; height: auto; }
+:root[data-theme="dark"] .logo-text { filter: invert(1); }
+:root[data-theme="dark"] .logo-anim .dots { filter: none; }
+/* With JavaScript on and motion allowed, keep the finished logo hidden until the animation starts,
+   so it doesn't flash before assembling; it shows after 2 s regardless, in case the script fails. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .logo-anim:not(.playing) svg, .js .logo-anim:not(.playing) .logo-text { opacity: 0; animation: logo-fallback 0s 2s forwards; }
+}
+@keyframes logo-fallback { to { opacity: 1; } }
 :root[data-theme="dark"] .mosaic img { background: #ffffff; }   /* published plots stay on white */
 .affiliation { font-size: 1.25rem; color: var(--muted); margin: 0; }
 .funding {
