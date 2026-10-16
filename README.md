@@ -56,6 +56,10 @@ The moon/sun button (top-right corner of every page; at the right end of the top
 
 The logo on the home page is drawn from code (an SVG in `index.html`) and assembles itself like the configuration model: the 10 nodes appear scattered at random, each grows one stub per future link (pointing at its partner), and the 7 pairs of stubs join one at a time, in random order, while every node drifts into its place in the logo, arriving just after its last link forms; then the lab name fades in (`assets/img/logo-text.png`, the lettering from the original `logo.png`). It plays once when the page opens (about 7 s), and clicking the logo plays it again with a new scattering. Without JavaScript, or with "reduce motion" on, the finished logo is shown. The node and link positions were measured from `logo.png`, so the finished drawing matches it. The animation is in `assets/js/logo-assembly.js`; its colors are `--logo-ink` and `--logo-hi` (the gold of a joining pair) in `style.css`.
 
+## "Last updated" date
+
+The footer date updates itself: a small script shows when the site was last published, which GitHub Pages reports with every page, so any commit (including edits made directly on GitHub) moves it forward. The date written into the HTML is only a fallback for browsers without JavaScript.
+
 ## Seeing your changes
 
 After you commit, GitHub needs a minute or two to publish. Each page loads `style.css?v=…` with a code that changes whenever the stylesheet changes, so browsers always pick up a new stylesheet. To force a fresh reload anyway: Safari Option+Cmd+R; Chrome/Firefox on Mac Cmd+Shift+R.
