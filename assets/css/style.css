@@ -62,7 +62,7 @@
 @font-face {
   font-family: "Iropke Batang";
   src: url("../fonts/iropke-batang-m.woff2") format("woff2");
-  font-weight: 400;
+  font-weight: 100 900;   /* one weight for all: bold Korean uses the regular letters instead of a faked bold */
   font-style: normal;
   font-display: swap;
   unicode-range: U+AC00-D7A3, U+3131-318E, U+1100-11FF;
