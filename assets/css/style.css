@@ -10,6 +10,7 @@
   --rule: #d9e0e8;
   --gnu-blue: #2f87c8;
   --link: var(--ink);   /* links are black and underlined, as on the former Google Site */
+  --link-hover: #1d6fb5;   /* links turn blue on hover */
   --node-red: #c8452f;
 
   /* EB Garamond for Latin text. It has no Hangul, so Korean uses 이롭게바탕체 (Iropke Batang,
@@ -42,6 +43,7 @@
   --wash: #111111;
   --rule: #2c2c2c;
   --gnu-blue: #6cb2ea;
+  --link-hover: #6cb2ea;
   --node-red: #f0846c;
 
   --side-bg: #f1f1ee;
@@ -88,7 +90,7 @@ body {
 img { max-width: 100%; height: auto; }
 
 a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
-a:hover { color: var(--node-red); }
+a:hover { color: var(--link-hover); }
 a:focus-visible { outline: 2px solid var(--gnu-blue); outline-offset: 2px; border-radius: 2px; }
 
 .skip {
@@ -177,7 +179,7 @@ html:not(.js) .theme-toggle { display: none; }   /* needs JavaScript */
   border-bottom: 1px solid var(--rule);
 }
 .page h2 a { color: inherit; text-decoration: none; }
-.page h2 a:hover { color: var(--node-red); }
+.page h2 a:hover { color: var(--link-hover); }
 
 .page p, .page ul, .page ol { max-width: var(--measure); }
 .page p { margin: 0 0 1rem; }
